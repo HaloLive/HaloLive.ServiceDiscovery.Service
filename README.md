@@ -10,6 +10,7 @@ To use this project you'll first need a couple of things:
 
 * Visual Studio 2017
 * Netcore 1.1
+* Nuget Feed: https://www.myget.org/F/halolive/api/v3/index.json
 
 ## Builds
 
