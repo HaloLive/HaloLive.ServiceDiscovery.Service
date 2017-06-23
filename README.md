@@ -24,7 +24,7 @@ TODO:
 TODO:
 
 |    | Windows .NET Debug |
-|:---|----------------:|------------------:|
+|:---|------------------:|
 |**master**| [![Build status](https://ci.appveyor.com/api/projects/status/rinvn2tdxn0yinf4?svg=true)](https://ci.appveyor.com/project/HelloKitty/halolive-library) |
 |**dev**| [![Build status](https://ci.appveyor.com/api/projects/status/rinvn2tdxn0yinf4/branch/dev?svg=true)](https://ci.appveyor.com/project/HelloKitty/halolive-library/branch/dev) |
 
