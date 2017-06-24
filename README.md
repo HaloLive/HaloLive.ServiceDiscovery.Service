@@ -16,7 +16,15 @@ To use this project you'll first need a couple of things:
 
 To build the service you can run the Batch script called [build.bat](https://github.com/HaloLive/HaloLive.ServiceDiscovery.Service/blob/master/build.bat) or manually publish it in visual studio.
 
-Both will generate a build in a build folder.
+Both will successfully build the application.
+
+## Running
+
+To run the application you can use the [run.bat](https://github.com/HaloLive/HaloLive.ServiceDiscovery.Service/blob/master/run.bat), assuming you built it with [build.bat](https://github.com/HaloLive/HaloLive.ServiceDiscovery.Service/blob/master/build.bat) and put it in the build directory, or you can run the following command in the console in the publish directory:
+
+```
+dotnet HaloLive.ServiceDiscovery.Application.dll
+```
 
 ## Configuration
 
