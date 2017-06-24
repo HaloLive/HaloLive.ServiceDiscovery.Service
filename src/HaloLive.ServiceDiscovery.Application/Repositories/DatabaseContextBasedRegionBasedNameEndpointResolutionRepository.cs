@@ -26,6 +26,9 @@ namespace HaloLive.ServiceDiscovery
 		/// <inheritdoc />
 		public async Task<ResolvedEndpoint> RetrieveAsync(ClientRegionLocale locale, NetworkServiceType serviceType)
 		{
+			if (!Enum.IsDefined(typeof(ClientRegionLocale), locale)) throw new ArgumentOutOfRangeException(nameof(locale), "Value should be defined in the ClientRegionLocale enum.");
+			if (!Enum.IsDefined(typeof(NetworkServiceType), serviceType)) throw new ArgumentOutOfRangeException(nameof(serviceType), "Value should be defined in the NetworkServiceType enum.");
+
 			NamedResolvedEndpointEntryModel model = await EndpointsContext.Endpoints.FirstOrDefaultAsync(e => e.Region == locale && e.Service == serviceType);
 
 			if(model == null)
