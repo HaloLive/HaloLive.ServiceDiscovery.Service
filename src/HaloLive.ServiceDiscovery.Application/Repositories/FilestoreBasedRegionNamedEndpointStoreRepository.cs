@@ -17,6 +17,8 @@ namespace HaloLive.ServiceDiscovery
 		/// <inheritdoc />
 		public async Task<NameEndpointResolutionStorageModel> Retrieve(ClientRegionLocale region)
 		{
+			if (!Enum.IsDefined(typeof(ClientRegionLocale), region)) throw new ArgumentOutOfRangeException(nameof(region), "Value should be defined in the ClientRegionLocale enum.");
+
 			using (StreamReader reader = File.OpenText(BuildRegionEndpointFileLocation(region)))
 			{
 				return Newtonsoft.Json.JsonConvert.DeserializeObject<NameEndpointResolutionStorageModel>(await reader.ReadToEndAsync());
@@ -26,11 +28,15 @@ namespace HaloLive.ServiceDiscovery
 		/// <inheritdoc />
 		public Task<bool> HasRegionStore(ClientRegionLocale region)
 		{
+			if (!Enum.IsDefined(typeof(ClientRegionLocale), region)) throw new ArgumentOutOfRangeException(nameof(region), "Value should be defined in the ClientRegionLocale enum.");
+
 			return Task.FromResult(File.Exists(BuildRegionEndpointFileLocation(region)));
 		}
 
 		private string BuildRegionEndpointFileLocation(ClientRegionLocale region)
 		{
+			if (!Enum.IsDefined(typeof(ClientRegionLocale), region)) throw new ArgumentOutOfRangeException(nameof(region), "Value should be defined in the ClientRegionLocale enum.");
+
 			return $@"Endpoints/Endpoints{region.ToString()}.json";
 		}
 	}

@@ -33,7 +33,7 @@ namespace HaloLive.ServiceDiscovery
 			LoggingService = loggingService;
 		}
 
-		[HttpPost("Discover")]
+		[HttpPost(nameof(Discover))]
 		public async Task<ResolveServiceEndpointResponseModel> Discover([FromBody] ResolveServiceEndpointRequestModel requestModel)
 		{
 			if (!ModelState.IsValid)
@@ -47,7 +47,7 @@ namespace HaloLive.ServiceDiscovery
 			//We need to check if we know about the locale
 			//If we don't we should indicate it is unlisted
 			//We also need to check if the keypair region and servicetype exist
-			if (!await EndpointRepository.HasDataForRegionAsync(requestModel.Region) || !await EndpointRepository.HasEntryAsync(requestModel.Region, requestModel.ServiceType))
+			if (!await EndpointRepository.HasEntryAsync(requestModel.Region, requestModel.ServiceType))
 			{
 				if(LoggingService.IsEnabled(LogLevel.Debug))
 					LoggingService.LogDebug($"Client requested unlisted service Region: {requestModel.Region} Service: {requestModel.ServiceType}.");

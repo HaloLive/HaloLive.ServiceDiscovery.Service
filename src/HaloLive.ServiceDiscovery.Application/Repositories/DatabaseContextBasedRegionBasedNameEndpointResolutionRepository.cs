@@ -37,12 +37,17 @@ namespace HaloLive.ServiceDiscovery
 		/// <inheritdoc />
 		public async Task<bool> HasDataForRegionAsync(ClientRegionLocale locale)
 		{
+			if (!Enum.IsDefined(typeof(ClientRegionLocale), locale)) throw new ArgumentOutOfRangeException(nameof(locale), "Value should be defined in the ClientRegionLocale enum.");
+
 			return await EndpointsContext.Endpoints.AnyAsync(e => e.Region == locale);
 		}
 
 		/// <inheritdoc />
 		public async Task<bool> HasEntryAsync(ClientRegionLocale locale, NetworkServiceType serviceType)
 		{
+			if (!Enum.IsDefined(typeof(ClientRegionLocale), locale)) throw new ArgumentOutOfRangeException(nameof(locale), "Value should be defined in the ClientRegionLocale enum.");
+			if (!Enum.IsDefined(typeof(NetworkServiceType), serviceType)) throw new ArgumentOutOfRangeException(nameof(serviceType), "Value should be defined in the NetworkServiceType enum.");
+
 			return await EndpointsContext.Endpoints.AnyAsync(e => e.Region == locale && e.Service == serviceType);
 		}
 	}
