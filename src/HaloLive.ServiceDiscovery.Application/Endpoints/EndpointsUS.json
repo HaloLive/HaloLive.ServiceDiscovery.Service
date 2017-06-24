@@ -1,8 +1,0 @@
-{
-	"Region": "US",
-
-	"ServiceEndpoints":
-	{
-		"AuthenticationService" : { "EndpointAddress": "127.0.0.1", "EndpointPort": 80 }
-	}
-}
