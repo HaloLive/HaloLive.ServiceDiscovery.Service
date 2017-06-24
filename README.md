@@ -12,13 +12,33 @@ To use this project you'll first need a couple of things:
 * Netcore 1.1
 * Nuget Feed: https://www.myget.org/F/halolive/api/v3/index.json
 
-## Builds
+## Build
 
-TODO: 
+To build the service you can run the Batch script called [build.bat](https://github.com/HaloLive/HaloLive.ServiceDiscovery.Service/blob/master/build.bat) or manually publish it in visual studio.
+
+Both will generate a build in a build folder.
+
+## Configuration
+
+In the future endpoints entries may move to a MySQL database. Right now they're located in the file store serialized in JSON.
+The current endpoint loading system expects all endpoints to be in a folder called **Endpoints** relative to the running application. The build script will create this folder for you.
+
+It expects endpoint files to be named **Endpoints{Region}.json** where the {Region} is a region string like *US* or *CN*. Below is an example file for the EndpointsUS.json file.
+
+```
+{
+	"Region": "US",
+
+	"ServiceEndpoints":
+	{
+		"AuthenticationService" : { "EndpointAddress": "127.0.0.1", "EndpointPort": 80 }
+	}
+}
+```
 
 ## Tests
 
-TODO:
+TODO: The current appveyor tags are to HaloLive.Library
 
 |    | Windows .NET Debug |
 |:---|------------------:|
