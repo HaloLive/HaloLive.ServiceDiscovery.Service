@@ -33,7 +33,7 @@ namespace HaloLive.ServiceDiscovery
 			LoggingService = loggingService;
 		}
 
-		[HttpPost]
+		[HttpPost("Discover")]
 		public async Task<ResolveServiceEndpointResponseModel> Discover([FromBody] ResolveServiceEndpointRequestModel requestModel)
 		{
 			if (!ModelState.IsValid)
