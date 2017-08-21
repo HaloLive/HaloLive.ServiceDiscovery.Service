@@ -16,8 +16,8 @@ namespace HaloLive.ServiceDiscovery
 		/// <param name="locale">The locale of the region the request is coming from.</param>
 		/// <param name="serviceType">The type of serviced requested.</param>
 		/// <exception cref="KeyNotFoundException">Thrown if the locale or service is unknown.</exception>
-		/// <returns>A non-null <see cref="ResolvedEndpoint"/> pointing to the correct service of the specified <see cref="NetworkServiceType"/>.</returns>
-		Task<ResolvedEndpoint> RetrieveAsync(ClientRegionLocale locale, NetworkServiceType serviceType);
+		/// <returns>A non-null <see cref="ResolvedEndpoint"/> pointing to the correct service of the specified service.</returns>
+		Task<ResolvedEndpoint> RetrieveAsync(ClientRegionLocale locale, string serviceType);
 
 		/// <summary>
 		/// Indicates if the repository has entries for the specified <see cref="ClientRegionLocale"/> <see cref="locale"/>.
@@ -28,11 +28,11 @@ namespace HaloLive.ServiceDiscovery
 
 		/// <summary>
 		/// Indicates if the repository has an entry for the specified <see cref="ClientRegionLocale"/> <see cref="locale"/>
-		/// and <see cref="NetworkServiceType"/> <see cref="serviceType"/>.
+		/// and the <see cref="serviceType"/>.
 		/// </summary>
 		/// <param name="locale">The locale to check for.</param>
 		/// <param name="serviceType">The servicetype to check for.</param>
 		/// <returns>True if an entry exists.</returns>
-		Task<bool> HasEntryAsync(ClientRegionLocale locale, NetworkServiceType serviceType);
+		Task<bool> HasEntryAsync(ClientRegionLocale locale, string serviceType);
 	}
 }

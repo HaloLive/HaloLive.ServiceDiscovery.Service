@@ -24,10 +24,10 @@ namespace HaloLive.ServiceDiscovery
 		}
 
 		/// <inheritdoc />
-		public async Task<ResolvedEndpoint> RetrieveAsync(ClientRegionLocale locale, NetworkServiceType serviceType)
+		public async Task<ResolvedEndpoint> RetrieveAsync(ClientRegionLocale locale, string serviceType)
 		{
 			if (!Enum.IsDefined(typeof(ClientRegionLocale), locale)) throw new ArgumentOutOfRangeException(nameof(locale), "Value should be defined in the ClientRegionLocale enum.");
-			if (!Enum.IsDefined(typeof(NetworkServiceType), serviceType)) throw new ArgumentOutOfRangeException(nameof(serviceType), "Value should be defined in the NetworkServiceType enum.");
+			if (string.IsNullOrWhiteSpace(serviceType)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(serviceType));
 
 			NamedResolvedEndpointEntryModel model = await EndpointsContext.Endpoints.FirstOrDefaultAsync(e => e.Region == locale && e.Service == serviceType);
 
@@ -46,10 +46,10 @@ namespace HaloLive.ServiceDiscovery
 		}
 
 		/// <inheritdoc />
-		public async Task<bool> HasEntryAsync(ClientRegionLocale locale, NetworkServiceType serviceType)
+		public async Task<bool> HasEntryAsync(ClientRegionLocale locale, string serviceType)
 		{
 			if (!Enum.IsDefined(typeof(ClientRegionLocale), locale)) throw new ArgumentOutOfRangeException(nameof(locale), "Value should be defined in the ClientRegionLocale enum.");
-			if (!Enum.IsDefined(typeof(NetworkServiceType), serviceType)) throw new ArgumentOutOfRangeException(nameof(serviceType), "Value should be defined in the NetworkServiceType enum.");
+			if (string.IsNullOrWhiteSpace(serviceType)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(serviceType));
 
 			return await EndpointsContext.Endpoints.AnyAsync(e => e.Region == locale && e.Service == serviceType);
 		}

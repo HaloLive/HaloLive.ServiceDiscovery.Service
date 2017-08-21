@@ -24,7 +24,7 @@ namespace HaloLive.ServiceDiscovery
 		/// Indicates the service.
 		/// </summary>
 		[Required]
-		public NetworkServiceType Service { get; private set; } //must have setter for EF
+		public string Service { get; private set; } //must have setter for EF
 
 		/// <summary>
 		/// Indicates the endpoint address.
@@ -38,11 +38,11 @@ namespace HaloLive.ServiceDiscovery
 		[Required]
 		public int EndpointPort { get; private set; } //must have setter for EF
 
-		public NamedResolvedEndpointEntryModel(ClientRegionLocale region, NetworkServiceType service, string endpointAddress, int endpointPort)
+		public NamedResolvedEndpointEntryModel(ClientRegionLocale region, string service, string endpointAddress, int endpointPort)
 		{
 			if (!Enum.IsDefined(typeof(ClientRegionLocale), region)) throw new ArgumentOutOfRangeException(nameof(region), "Value should be defined in the ClientRegionLocale enum.");
-			if (!Enum.IsDefined(typeof(NetworkServiceType), service)) throw new ArgumentOutOfRangeException(nameof(service), "Value should be defined in the NetworkServiceType enum.");
 			if (string.IsNullOrWhiteSpace(endpointAddress)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(endpointAddress));
+			if (string.IsNullOrWhiteSpace(service)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(service));
 
 			Region = region;
 			Service = service;
